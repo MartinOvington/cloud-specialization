@@ -1,14 +1,14 @@
-## Cloud Computing Concepts Part 1
+# Cloud Computing Concepts Part 1
 
 The first course in the specialization covered the internals of cloud computing - the fundamentals of distributed systems and the distributed algorithms that are used in such systems.
 
-### Week 1 - What are Clouds, MapReduce
+## Week 1 - What are Clouds, MapReduce
 
 The market for cloud computing services has grown enormously in the last decade, with big players including Amazon AWS, Microsoft Azure and Google Cloud Computing Services. Cloud computing is a loosely defined subset of distributed systems, usually focusing on providing private or public systems that can be rented on demand to provide a variety of computing and storage services. They are often build using connecting together lots of cheaper commodity hardware, which distinguishes clouds from other distributed systems where highly specialized, expensive high performance hardware is used. The service is usually provided from one or more datacentres, with big providers having many sites throughout the world so that customers can choose ones closer to them for lower latency. The motivation is largely to provide customers with easy to use services that have low or no upfront costs, thus saving them time and money for many use cases.
 
 The MapReduce programming paradigm introduced by Google in 2004 and consists of a series of mapping and reducing cycles used to process data. It is a flexible model that works on Key-Value pairs and can be use in large variety of cases. It is particularly well suited to distributed computing as the Map and Reduce tasks can often be parallelized due to independence of the work, thus allowing the tasks to be split across multiple workers. Workers get their data input from a distributed file system e.g. Google File System (GFS), Hadoop Distributed File System (HDFS). Intermediate results from the Map tasks are stored on workers' local file system to exploit locality and reduce tasks then use these local data as input and outputs the result to the distributed file system. Apache Hadoop is an implementation of this paradigm and consists of a Global Resource Manager (RM) that schedules tasks, Per-server Node Managers (NM) that are responsible for daemon and server specific functions and a Per-application Master that negotiates with the RM and NM and is also responsible for detecting task failures. Server failure is detecting via heartbeating and if a worker is performing a task slowly, the task is replicated and given to another worker.
 
-### Week 2 - Gossip, Membership, Grids
+## Week 2 - Gossip, Membership, Grids
 
 Within distributed systems it is often necessary for nodes to have some knowledge of the state of other nodes within the network. Using a central node to aggregate and send out this information creates a single point of failure and may cause a bottleneck to develop in the network. The Gossip protocol, also known as Epidemic protocol is a solution to this problem that involves nodes sending out it's own aggregated state data to a randomly selected subset of the other nodes. Despite the randomness, it can be shown that such a system fairly reliably propagates data throughout the entire network and requires few cycles to do so - much like how gossip and epidemics quickly spread. Importantly, the protocol has the characteristic of fault tolerance, such that if any one node fails it usually does not constitute a total failure of the system. Cassandra, a distributed key-value store is an example of a system that uses the gossip protocol for maintaining membership lists.
 
@@ -16,7 +16,7 @@ A group membership list is the aggregated information as to which nodes form the
 
 Grids are used for computation-intensive computing, also known as High Performance computing (HPC). Some data processing tasks are very CPU intensive, but do require much storage or memory and such are more suited to a HPC grid solution. Scheduling for HPC consists of both intra and inter-site protocols.
 
-### Week 3 - Peer-to-Peer (P2P) Systems, Distributed Hash Tables (DHT)
+## Week 3 - Peer-to-Peer (P2P) Systems, Distributed Hash Tables (DHT)
 
 P2P systems were the first large, scalable distributed systems and some of the techniques are used in key-values stores. They are therefore very relevant to the study of cloud computing. P2P systems are split into unstructured P2P systems and structured P2P systems. They have been commonly used for file sharing, both legal and illegal, with well known platforms such as Napster and BitTorrent.
 
@@ -34,7 +34,7 @@ Pastry is a P2P system that assigns IDs to nodes using consistent hashing like C
 
 Kelips builds on this idea of locality by maintaining k number of 'affinity groups', each of which is based on the locality of nodes with each other. Within an affinity group, nodes know of all other nodes within that group. One node within that group maintains a link to a node in each of the 'foreign' affinity groups. Lookup costs are then O(1), which is an improvement over Chord, but has the disadvantage of slightly worse memory usage at O(sqrt(N)).
 
-### Week 4 - Key-Value NoSQL Stores, Time and Ordering
+## Week 4 - Key-Value NoSQL Stores, Time and Ordering
 
 Key-value stores are pairs of keys of values, that allow you to lookup and retrieve values using a given key. Modern workloads has data that is often large and unstructured, has lots of random reads and writes, do no often require foreign keys, are sometimes write heavy and needs to perform joins infrequently. This means we can come up with a simpler, more suitable storage solution than tradition relational databases. Having a system where we can scale out in a cost effective fashion is desirable. NoSQL, 'Not Only SQL', helps us with many of these requirements. It is largely based on the the API consisting of get(key) and put(key, value). NoSQL tables can be structured or unstructured with no schema. NoSQL can use column based storage rather than row based storage that tradition relational database management systems (RDBMSs) use, which allow you to do column based searches faster.
 
@@ -50,7 +50,7 @@ In cloud systems, synchronization is required for correctness or fairness. It is
 
 Logical (or Lamport) ordering uses a happens-before relationship among pairs of events across processes. The result is a partial ordering among events within the group of processes, meaning not all events will have a causal ordering between them. We cannot distinguish between **causal** and **concurrent** events in this system. Vector clocks solve this problem by using a vector of times (one per process in system) rather than a single time. This allows us to set up rules that allow us to identify concurrent and causal events.
 
-### Week 5 Snapshots, Multicast, Paxos
+## Week 5 Snapshots, Multicast, Paxos
 
 Global snapshots in clouds is used for checkpointing, garbage collection, deadlock detection and termination of computation. The global snapshot is the global state of all the processes at a given point in time. Issues related to causality, time synchronization and messages in transit make creating this snapshot challenging. The Chandy-Lamport is an algorithm for creating a global snapshot in a running system. It uses marker messages, sent out from an initiator process and then multicast to other processes on receipt of the first marker messages that it has received for this snapshot. Processes record the events and messages that happen between this first marker messages and receiving marker messages on all other incoming channels. Global snapshots should aim to create **consistent cuts**, which means that all the events that they encapsulate are causally correct i.e. if A causes B and B is in the cut, then A should be in the cut.
 
@@ -62,7 +62,7 @@ The consensus problem is relevant to reliable multicasting, membership/failure d
 
 The consensus problem has been shown to be impossible to solve in asynchronous systems. Paxos is an algorithm that tackles the consensus problem in asynchronous systems by providing a safety guarantee and eventual liveness. It is used by systems such as Zookeeper and Google's Chubby system. Paxos works in rounds with a unique ballot ID for each round. Rounds are asynchronous and are broken into phases: leader election, leader proposes a value (bill) and finally leader multicasting final value (law). The leader election requires reaching a majority (quorum). The leader then sends proposed values to all other processes, which reply OK on receipt and log the value. If the leader gets a majority of OKs, then it treats it as consensus and the value is decided.
 
-### Programming assignment 1: Membership protocol
+## Programming assignment 1: Membership protocol
 
 The programming assignment involved implementing a membership protocol. The code provided was split into an application layer, a peer-to-peer layer and an emulated network layer (EmulNet). The membership protocol was to be implemented in the P2P layer and had to satisfy completeness all the time, meaning non-faulty processes had to detect every node join, failure and leave. The protocol had to satisfy a certain level of accuracy of failure detection. The implementation of the protocol was tested under simulated message loss and single and multiple node failures.
 

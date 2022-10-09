@@ -1,8 +1,8 @@
-## Cloud Computing Applications Part 1: Cloud Systems and Infrastructure
+# Cloud Computing Applications Part 1: Cloud Systems and Infrastructure
 
 The first cloud computing applications course covered how the cloud is built, organised, structured to be effective. It taught the economics behind cloud computing, the technologies that enable it and the many different types of cloud services offered.
 
-### Week 1 Cloudonomics, Big Data, Cloud Services
+## Week 1 Cloudonomics, Big Data, Cloud Services
 
 The arguments for using cloud computing revolve around economics and ease of use. Owning your own information systems requires a large initial investment, heavy fixed costs. You will often have more computing power than you need because you had to buy capacity that represents your highest usage even though this may only be required a fraction of the time. Often times running these systems is complex, so it can take a long time to set up and may fail at times. These factors drove the emergence of cloud computing services.
 
@@ -14,37 +14,37 @@ Software defined architecture is the mechanism for providing services, orchestra
 
 The different types of services that are offered through the cloud are Software as a Service (SaaS), Platform as a Service (PaaS) and Infrastructure as a Service (IaaS). Which service is used defines the proportion of the computing stack is managed by the cloud provider vs. the remainder that the client can fully control. As you move up the scale from IaaS to SaaS, there is greater scope for multi-tenancy, but with this comes less control and the client may notice that they are sharing hardware if they experience lower performance.
 
-### Week 2 Virtualisation, OS Based Virtualisation, Containers, IaaS
+## Week 2 Virtualisation, OS Based Virtualisation, Containers, IaaS
 
 In order to build systems that allow for multi-tenancy there must be some type of virtualisation that provides an abstraction for the layers below the level at which the service is provided. The virtualisation can help to avoid creating software that has dependencies on physical resources, the software only needs to care about the API that it has to use to interact with lower levels. The virtualisation paradigm can be used for distributed systems, such that the distributed nature of the system can be completely hidden from the client, greatly increasing easy-of-use. The difference levels of virtualisation include native (full), hardware assisted, para-virtualisation and OS level e.g. containers, jails, Chroot.
 
 Native and full virtualisation utilises a virtual machine that simulates enough hardware to allow unmodified OSes to be run in isolation. Examples of full virtualisation software include VirtualBox, Virtual PC and QEMU. They utilise a a hypervisor above the hardware, which handles instructions from the guest OSes that might other break their isolation, other instructions run directly on the hardware. In this way higher performance is achieved as only a subset of instructions from the OS goes through the hypervisor.
 
-Native Virtualisation (from course slides):
+Native Virtualisation:
 
 ![Native Virtualisation](images/native_virt.png 'Native Virtualisation')
 
 In hardware enabled virtualisation the virtual machine has its own hardware which is enabled by specialised hardware such as Intel VT and AMD-V. Examples include VMWare Fusion and Parallels Workstation.
 
-Hardware Enabled Virtualisation (from course slides):
+Hardware Enabled Virtualisation:
 
 ![Hardware-Assisted](images/hardware_virt.png 'Hardware Enabled')
 
 Paravirtualization uses virtual machines to simulate multiple instances of underlying hardware environment such as address spaces. It can use a modified guest OS that has a special API to communicate with the hypervisor. Examples include XEN, KVM and Win4Lin 9x. The downside of this system is that the hypervisor calls have higher overhead than direct communication with the hardware.
 
-Paravirtualization (from course slides):
+Paravirtualization:
 
 ![Paravirtualization](images/para_virt.png 'Paravirtualization')
 
 OS-level virtualisation allows for the virtualisation of physical servers at the OS-level, which enables multiple virtualised, isolated servers to run on a single physical server. Examples include Parallels Workstation, Linux-VServer and FreeBSD Jails. We can use containers or hypervisors. Containers are more elastic, but hypervisors have the advantage of supporting different OS families on a single server when using IaaS model.
 
-OS-level Virtualisation (from course slides):
+OS-level Virtualisation:
 
 ![OS-level Virtualisation](images/os_virt.png 'OS-level Virtualisation')
 
 Containers are very for building parallelised applications in way that can be quickly switched between. They do not offer as much isolation and security as lower levels of virtualisation. Docker provides a formalised API for software to run as a container, which makes it easy to run in the same way regardless of the the environment. It provides a layer of abstraction between applications and the specific OS and hardware. To the application it looks like it has an entire OS to itself. Once built by the docker engine, images are stored and controlled from the docker container image registry, which provides a kind of version control.
 
-Docker (from course slides):
+Docker:
 
 ![Docker](images/docker.png 'Docker')
 
@@ -62,7 +62,7 @@ Google is another cloud service provider and has a particular focus on advertisi
 
 Serverless architecture is where you have server-side logic written by a developer that runs on stateless compute containers in response to certain events. It can be seen as Functions as a Service (FaaS). AWS Lambda is a popular implementation of this model. Users of the service pay only for the requests that are served and the compute time used. Once the function has finished running, the user is no longer paying for any compute services. As the service is stateless, there is no storage cost beyond the lifetime of the function call. The managed nature of the service allows users to focus on the logic of the program rather than orchestration of compute infrastructure, which makes it easy to use. Within AWS Lambda, there can be many different sources of events and can include S3, DynamoDB, Kinesis Streams etc.
 
-### Week 3 MaaS, PaaS, Web Middleware
+## Week 3 MaaS, PaaS, Web Middleware
 
 Metal as a Service (MaaS) is the providing of server machines themselves. The users can choose which OS to install, how the drives and network are configured, what the access credentials are and when they no longer need the server. The MaaS system takes care of the management of individual units and can quickly provision and destroy machines. MaaS has region controllers which have a web UI and API for users to interact with and these region controllers communicate with cluster controllers. The MaaS dashboard gives an overview of the status and specification of individual servers and allows users to take actions such as power on and power off servers. When servers power on they use PXE boot to load their OS and configuration across the network. Juju is open source software used for managing services running on MaaS.
 
@@ -80,7 +80,7 @@ Protocol Buffers were invented by Google for distributed services and build on t
 
 Mobile Backend as a Services (MBaaS) is the provision of commonly used services for use in mobile applications. Examples include cloud storage, user management, push notifications and integration with social media. MBaaS provide these in a one-shop model.
 
-### Week 4 Ceph, Hive, Tez, Swift/S3, Amazon EBS Glacier, Dropbox Cloud API
+## Week 4 Ceph, Hive, Tez, Swift/S3, Amazon EBS Glacier, Dropbox Cloud API
 
 Ceph is a distributed file system that is designed for performance, reliability,scalability and is more general than HDFS. Ceph consists of a Meta Data Server, Object Data Server and a Monitor. It uses reliable autonomic distributed storage for replication. The API is similar to POSIX, so it is far easier to use than HDFS. Meta data is distributed among clusters of servers, which increases performance and helps with load balancing and failure tolerance by not relying on a single central server.
 

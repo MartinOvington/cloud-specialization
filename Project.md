@@ -1,6 +1,6 @@
-## Cloud Computing Project
+# Cloud Computing Capstone Project
 
-### Overview
+## Overview
 
 The capstone project formed the final course in the Cloud Computing Specialization. It required using cloud computing technologies to process and analyse big data. The first task was to process and analyse the data using a batch processing framework and the second task was to perform the same processing and analysis, except using a stream processing framework instead. The aim was to gain experience in using real cloud computing services and big data processing tools. Doing the two tasks allowed for some comparison in the difference between the two ways of handling big data. The methods were compared, informally, mainly for their ease-of-use and performance.
 
@@ -20,6 +20,6 @@ The second task required using a **stream processing** framework to answer the s
 
 Having become familiar with AWS and Spark in Task 1, the main challenge in the second task was getting the queries from Task 1 to work with Spark Structured Streaming. Spark Streaming can output the result of queries to console, files and memory, similar to regular batch processing. Spark Streaming requires that an output mode be specified as it is designed for use in scenarios where you have a potentially infinite stream of data and desire intermediate results. The output mode can be complete, append or update, which determines how results of queried are outputted as new micro-batches of data are processed. There are limitations as to which combinations of output format and output mode can be used with specific types of queries. For example, aggregation queries cannot be run in append mode unless the streamed data is time-stamped and the aggregation is using these time-stamps. In our case, the difficulty arose due to the requirement that a streaming framework be used in a scenario where we have a fixed amount of data we wish to process - the entirety of the data set within the .parquet files. Intermediate results were not required to answer the questions and would indeed produce an incorrect answer. A work-around for this problem was to write the dataframes from the queries to memory first and when no more data was being streamed from the files this was converted to a non-streaming dataframe and outputted without restrictions.
 
-Overall the performance of the batch processing frameworks and streaming frameworks were similar when run on the cluster, but the batch processing framework completed the significantly task faster on the local machine. The comparison was slightly artificial given that the full data set was available for both methods from the start. Nevertheless, it interesting to learn to use and test both styles of big data processing on a real cloud service.
+Overall the performance of the batch processing frameworks and streaming frameworks were similar when run on the cluster, but the batch processing framework completed the significantly task faster on the local machine. The comparison was slightly artificial given that the full data set was available for both methods from the start. Nevertheless, it was interesting to learn to use and test both styles of big data processing on a real cloud service.
 
 [Task 2 Report](Cloud%20Computing%20Capstone%20Task%202.pdf)

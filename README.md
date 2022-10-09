@@ -2,13 +2,22 @@
 
 ## Overview
 
-The Cloud Computing Specialization is a set of six courses, consisting of lectures, readings, challenging programming assignments and culminated in a larger project. The aim of this report is to present the key takeaways of what I've learned and to document my experience in working through the courses. The courses were my first time working with cloud / distributed computing. I have previously studied operating systems via "Operating Systems: Three Easy Pieces", networking via "Computer Networking: A-Top-Down Approach" and algorithms via "Data Structures and Algorithms in Python", all of which were very useful in working through the material and doing the assignments.
+The Cloud Computing Specialization is a set of six courses, consisting of lectures, readings, challenging programming assignments that culminated in a project centred course. The end-of-week quizzes often required working through algorithms and using mathematical formulae and could be quite tricky, but they were excellent for solidifying and testing the material that was learned during the week.
 
-Course link: https://www.coursera.org/specializations/cloud-computing
+Below are the write-ups of my notes that I took during the lectures and assignments. The notes were made to document the key takeaways of what I've learned and to write about my experience with the assignments. The project section contains my final reports for the capstone project.
 
-1. [Cloud Computing Concepts Part 1](#cloud-computing-concepts-part-1)
-2. [Cloud Computing Concepts Part 2](#cloud-computing-concepts-part-2)
-3. Cloud Computing Applications Part 1: Cloud Systems and Infrastructure
-4. Cloud Computing Applications Part 2: Big Data and Applications in the Cloud
-5. Cloud Networking
-6. Cloud Computing Project
+If you wish to learn more on the subject, I'd recommend checking out the courses, which can be audited for free: https://www.coursera.org/specializations/cloud-computing
+
+## Notes:
+
+### 1. [Cloud Computing Concepts Part 1](Concepts-1.md)
+
+### 2. [Cloud Computing Concepts Part 2](Concepts-1.md)
+
+### 3. [Cloud Computing Applications Part 1: Cloud Systems and Infrastructure](Applications-1.md)
+
+### 4. [Cloud Computing Applications Part 2: Big Data and Applications in the Cloud](Applications-2.md)
+
+### 5. [Cloud Networking](Cloud-Networking.md)
+
+### 6. [Cloud Computing Capstone Project](Project.md)

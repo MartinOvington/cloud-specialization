@@ -1,8 +1,8 @@
-## Cloud Computing Concepts Part 2
+# Cloud Computing Concepts Part 2
 
 The second course continues where the first course left off, with more teaching of the internals of the cloud - concepts, techniques and industry systems.
 
-### Week 1 Leader Election, Mutual Exclusion
+## Week 1 Leader Election, Mutual Exclusion
 
 Leader election is necessary in distributed systems for various reasons. From the clients perspective, they usually only wish to communicate with one of the nodes in the system, which must then act as the coordinator for the rest of the system. Another example that we have seen is where a global sequence number must be maintained, so we need a designated server for performing this function.
 
@@ -22,7 +22,7 @@ The Ricart-Agrawala algorithm is a classical distributed systems algorithm from 
 
 Maekawa's algorithm is another attempt to solve the mutual exclusion problem. Access to the critical section requires replies from _some_ of the other processes, a similar to requiring a quorum. Specifically, each process is associated with a _voting set_ that it requires votes from, the optimal size of which is around the square root of the total number of nodes. It uses the intersecting voting sets to ensure mutual exclusion.
 
-### Week 2 Concurrency and Replication Control
+## Week 2 Concurrency and Replication Control
 
 Remote Procedure Calls (RPCs) are an abstraction that allows a process to call a function in another process, an important concept in distributed systems. We can have different semantics for the execution of RPCs, which is needed due to the possibility of messages being dropped or processes failing. These include At-Most-Once, At-Least-Once and Maybe/Best-Effort calling semantics. **Idempotent** operations are those that can be repeated multiples times without side effects, which work well with At-Least-Once semantics. RPCs can be implemented using a stack consisting of Caller <-> Client stub <-> Caller comms module <-> Callee comms module <-> Dispatcher <-> Server stub <-> Callee. Marshalling may be required for communication between processes due to difference in architectures e.g. Big endian and Little endian. It involves using middleware that has a common data representation and converting to this format is called marshalling.
 
@@ -35,7 +35,7 @@ One approach is to have no restrictions on write and reads, but to check for ser
 
 Replication control deals with the handling of operations when there are objects stored at multiple servers with or without replication. Fault-tolerance is achieved by increasing the number of copies of an object we have. Load-balancing is important considerations when designing system and spreading read/writes across our replicas can help to spread the load across servers. **Availability** is related to the failure probability, with more replicas we have higher availability as there is a lower probability that all replicas have failed. Two challenges arise from having replicas - there should be replication transparency (to clients it looks like only one copy) and there needs to be some level of replication consistency. A two-phase commit is used to maintain atomicity of transactions across servers holding replicas for a given transaction. The coordinator keeps logs that can be used to replay transactions in the case that a replica server crashes before replying yes/no to the transaction request. Paxos can be used to decide whether to commit a transaction and order updates.
 
-### Week 3 Stream Processing, Distributed Graph Processing, Structure of Networks, Scheduling
+## Week 3 Stream Processing, Distributed Graph Processing, Structure of Networks, Scheduling
 
 Stream processing is used when we can large amounts of incoming data and we require real-time views of data e.g. twitter trends, website statistics, database intrusion detection. To achieve this we need a low latency and high-throughput system. Batch processing is not suitable for this task as we not have notions of partial results in this system and we must wait for entire computation of entire dataset to complete. Apache Storm is a widely used stream processing system. It consists of tuples streams, spouts, bolts and topologies. A spout is a source of streams, often reading from crawler or database and a bolt processes these streams into output streams. We combine spouts and bolts to from a topology. The topology can have cycles and often terminate in a single stream that forms the result. The architecture of a storm cluster is split into a master node running Nimbus, worker nodes running Supervisors and Zookeeper that coordinates the Nimbus and Supervisor communication.
 
@@ -45,7 +45,7 @@ Networks have different types of complexity. Structural complexity can be due to
 
 Schedulers should aim to achieve good throughput or response time and a high utilisation of resources. Different scheduling algorithms exist for single-processor scheduling - FIFO, Shortest Task First (STF), Round-Robin. FIFO and STF are preferable for batch applications and round-robin works well with systems that need high interactivity. Hadoop YARN has two popular schedulers - Capacity Scheduler and Hadoop Fair Scheduler. The Hadoop Capacity Scheduler uses multiple FIFO queues and guarantees each queue a set proportion of the cluster and puts higher priority tasks in queues that have more resources allocated to it. The Hadoop Fair Scheduler gives each job an equal share of resources. It divides the cluster into pools and divides resources equally between pools and prevents the cluster from being hogged by one user/job. Dominant-Resource Fair Scheduling takes into account the different proportions of the total system's resources that a task requires and attempts to fairly distribute resources according to these requirements.
 
-### Week 4 Distributed File Systems, Distributed Shared Memory, Sensor Networks
+## Week 4 Distributed File Systems, Distributed Shared Memory, Sensor Networks
 
 File systems are presented to the user as a high-level abstractions that present it as containing files and directories, which prevent users from having to think about disk blocks and memory blocks. Typical files contain a header followed by blocks containing the actual file contents. The header contains details such as timestamps, file type, ownership, access control list and reference count. Directories are simply a special case of a file and contain details of the files it contains. Distributed File Systems (DFS) stores files on a server and the client performs operations on files using RPCs. From our DFS we desire transparency for the client, functionality to support multiple concurrent client usage and replication so that we achieve fault tolerance. In DFSs we may need to authenticate the user based on some component of their messages and as they are often multi-user systems we may need some kind of authorisation e.g. through access control lists.
 
@@ -57,7 +57,7 @@ Distributed Shared Memory (DSM) is the notion of processes having shared memory 
 
 Sensor networks have become more popular as small, higher performance (Moore's Law), low-power-usage sensors have appeared in the market. These sensors collect an enormous amount of information and sensor technology helps to filter and process this information. The sensor nodes have some way of collecting information from the environment, a microprocessor, some sort of communication link and a power source like a battery. Types of sensors include acceleration, vibration, sound, CO/CO2, pathogen detectors etc. The transmission medium is typically radio frequency, but optical transmission may be used if the available power is lower, with the downside the line of sight is needed. The sensor nodes need a small, efficient OS. The TinyOS is one such OS, which has event-driven execution and a modular, decoupled structure, which is important as we do not want unnecessary overhead using power. Often sensors will work in bursts, so that they only use power when they have to and transmit during limited windows. They will sometimes aggregate and process data to save on the power needed to transmit it.
 
-### Week 5 Security and Datacentre Outage Studies
+## Week 5 Security and Datacentre Outage Studies
 
 As distributed systems must be designed to take into account security. Types of security threats include leakage (unauthorised access), tampering (unauthorised modification) and vandalism (interference with normal service). Common attacks including eavesdropping, masquerading, message tampering, replay attacks and denial of service (DoS). These threats are addressed by ensuring our systems protect of confidentiality, integrity and availability. **Policies** refers to the properties that we wish our security systems to have. **Mechanisms** refers to how these policies are achieved. The mechanisms usually break down into authentication, authorisation and auditing. Before designing out security system we define the attacker model, which specified the predicted capabilities of a realistic attack. Then we design and implement our security mechanisms, analyse the effectiveness of the system and measure the performance impact under normal operation.
 
@@ -71,7 +71,7 @@ Facebook suffered an outage in 2010, where Facebook was unreachable for 2.5hrs. 
 
 Planet had an outage on 2008. It was the 4th largest web hosting company and hosted 22,000 websites. The outage started with an explosion in a datacentre. A transformer caught fire, which caused an explosion of battery acid fumes the UPS backup and there was a cascading of failures. Some servers may have been moved off site to other datacentres, but there were 9,000 servers, so they could not all be moved. A key lesson is that sometimes we can lose access to data, so it is imperative to have important data be replicated, preferable across different sites.
 
-### Programming assignment 2: Key-value store
+## Programming assignment 2: Key-value store
 
 The second programming assignment was to implement a fault-tolerant key-value store. The key-value store was to be built within the same system that was worked on in the first programming assignment, so it was required that the membership protocol would be complete and have a high degree of accuracy so that nodes could detect failures.
 

@@ -1,10 +1,8 @@
-# Notes
-
-## Cloud Computing Applications Part 2: Big Data and Applications
+# Cloud Computing Applications Part 2: Big Data and Applications
 
 The second cloud computing applications course covered applications that are run on clouds for the processing of big data. It dealt with concerns such as storage, processing, parallelism, distribution, consensus and scalability and the key benefits and limitations of the various applications running on clouds.
 
-### Week 1 Spark, Hortonworks, HDFS
+## Week 1 Spark, Hortonworks, HDFS
 
 Apache Spark is designed to be used with iterative algorithm and to offer interactive data exploration/mining, things that traditional frameworks such as Hadoop MapReduce are not good for. Hadoop requires repeated access to to HDFS and offers no optimisation to data caching and data transfers and parallelism is limited to within each iteration. Acyclic data flows are inefficient for applications that repeatedly reuse a working set of data as we require when running iterative algorithms and use interactive data mining tools. Spark aims to enhance programmability and is written on top of Scala and offers a modified interactive Scala interpreter. Multiple frameworks have been built on Spark, including Pregel (GraphX), Hive (SparkSQL) and Mllib (machine learning).
 
@@ -20,7 +18,7 @@ On HDFS, files are split into contiguous chunks of 16-64MB, with each chunk bein
 
 Mesos was built to be a scalable global resource manager for data centres and YARN was built to scale Hadoop. YARN has a scheduler, NodeManagers and ApplicationsManagers. The ResourceTrackerService handles the membership of the system.
 
-### Week 2 Spark MapReduce, CAP Theorem, Distributed Key-Value Store, Scalable Database, Publish-Subscribe Queues
+## Week 2 Spark MapReduce, CAP Theorem, Distributed Key-Value Store, Scalable Database, Publish-Subscribe Queues
 
 MapReduce aims to provide a framework for users to define functions and provides automatic parallelism, fault tolerance, I/O scheduling and status monitoring. It helps to solve some of the problems that would otherwise occur with Traditional Programming Models, such as deadlock, large overhead from comm. mismanagement, inability to load balance and having a framework under which it is difficult to write code. MapReduce uses distributed storage and pushes computations to where the relevant storage is. Distributed File systems is distributed storage where we have a global namespace and examples include Google GFS and Hadoop HDFS.
 
@@ -38,7 +36,7 @@ Spark SQL allows for Structed Data Processing in Apache Spark and is built on to
 
 Apache Kafka is used for streaming data. It takes data from one or more producers, processes it in a Kafka cluster and then sends that out to one or more consumers. Kafka is a distributed, partitioned, replicated publish-subscribe system that provides a commit log service. It maintains feeds of messages in categories called topics and each server is called a Broker and communicates using TCP. The characteristics are that it is highly scalable, there are strong guarantees about messages (strictly ordered, persistent data) and it is distributed so that we have replication and partitioning (for fault tolerance). Each partition is replicated across a number of servers and has a leader with zero or more followers. The leaders coordinate read and write requests and ZooKeeper is used to keep servers consistent. Consumers can belong to Consumer Groups, which coordinate with each other to determine which consumer consume from which consumer.
 
-### Week 3 Streaming, Advanced Storm, Storm Internals, Spark Streaming
+## Week 3 Streaming, Advanced Storm, Storm Internals, Spark Streaming
 
 Streaming is used when we have a stream of events that flow into a system and we wish to have a real time view of this data. Example use cases driving this include real-time search, high frequency trading and social networks. The processing system that is used for this must be able to keep up with the event rate or disregard events gracefully, also called **load shedding**. Hadoop MapReduce was not able to handle this type of real-time stream processing. Cloud Streaming Engines include Apache Storm, Twitter Heron and Apache Flink.
 
@@ -50,7 +48,7 @@ Guaranteeing message processing comes in three flavours: none, at-least-once usi
 
 Traditional streaming can try to achieve fault tolerance by using lambda architecture to create redundancy. Storm processes records at-least-once and with Trident exactly-once, but this can become slow. Spark Streaming uses **discretized stream processing**, which means creating small batches out of the incoming data. The batch size is configurable, but the window is limited to about 0.5s at the lowest and if lower latency is required a different system may be a better option. DStream sources can include Kafka, HDFS, flume, Akka Actors, files, and sockets. Every time Spark processes a micro batch it calls the updateState function in each node, which is keeps state in an RDD, allowing for replaying on failure. Spark Streaming supports a rich ecosystem of big data tools, Spark SQL, Spark ML, Spark GraphX, SparkR. The disadvantage is that it is not true streaming as really it is still a type of batch processing.
 
-### Week 4 Graph Processing, Machine Learning
+## Week 4 Graph Processing, Machine Learning
 
 Graphs can be stored in a graph database, which contain associative data sets that typically do not require join operators. There are different ways to represent a graphs and the optimal choice may depend on the nature of the graph e.g. how sparse it is, which operations are required. Graph computing has two basic operations, which are **fusion** where information is aggregated to a vertex from neighbours and **diffusion** where information is propagated from a vertex to its neighbours. Graph algorithms and uses include Page Rank for web, Shortest Path for transportation routes, Connected Components for citation relationships and Clustering Techniques for social networks. The increasing size of graphs that we wish to process turns graph processing into a big data problem, which motivates the use of distributed computing strategies to handle them.
 
