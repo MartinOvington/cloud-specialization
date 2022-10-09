@@ -4,7 +4,7 @@
 
 The Cloud Computing Specialization is a set of six courses, consisting of lectures, readings, challenging programming assignments that culminated in a project centred course. The end-of-week quizzes often required working through algorithms and using mathematical formulae and could be quite tricky, but they were excellent for solidifying and testing the material that was learned during the week.
 
-Below are the write-ups of my notes that I took during the lectures and assignments. The notes were made to document the key takeaways of what I've learned and to write about my experience with the assignments. The project section contains my final reports for the capstone project.
+Below are the write-ups of my notes (>20,000 words) that I took during the lectures and assignments. The notes were made to document the key takeaways of what I've learned and to write about my experience with the assignments. The project section contains my final reports for the capstone project.
 
 If you wish to learn more on the subject, I'd recommend checking out the courses, which can be audited for free: https://www.coursera.org/specializations/cloud-computing
 
