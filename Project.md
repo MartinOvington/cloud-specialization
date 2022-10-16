@@ -2,7 +2,7 @@
 
 ## Overview
 
-The capstone project formed the final course in the Cloud Computing Specialization. It required using cloud computing technologies to process and analyse big data. The first task was to process and analyse the data using a batch processing framework and the second task was to perform the same processing and analysis, except using a stream processing framework instead. The aim was to gain experience in using real cloud computing services and big data processing tools. Doing the two tasks allowed for some comparison in the difference between the two ways of handling big data. The methods were compared, informally, mainly for their ease-of-use and performance.
+The capstone project formed the final course in the Cloud Computing Specialization. It required using cloud computing technologies to process and analyse big data. The first task was to process and analyse the data using a batch processing framework and the second task was to perform the same processing and analysis, except using a stream processing framework instead. The aim was to gain experience in using real cloud computing services and big data processing tools. Answering the same questions using both batch and stream processing allowed for some comparison in the difference between the two ways of handling big data. The methods were compared, informally, mainly for their ease-of-use and performance.
 
 ## Task 1 - Batch Processing
 
