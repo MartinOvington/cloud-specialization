@@ -6,7 +6,7 @@ The Cloud Computing Specialization was a set of six courses, consisting of lectu
 
 Below are the write-ups of my notes (>20,000 words) that I took during the lectures and assignments. The notes were made to document the key takeaways of what I've learned and to write about my experience with the assignments. The project section contains my final reports for the capstone project.
 
-These are primarily for my own useIf you wish to learn more on the subject, I'd recommend checking out the courses: https://www.coursera.org/specializations/cloud-computing
+The notes are mainly for my own use and if you wish to learn more about Cloud Computing, I'd recommend checking out the courses: https://www.coursera.org/specializations/cloud-computing
 
 ## Notes:
 
