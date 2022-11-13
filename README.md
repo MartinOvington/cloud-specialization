@@ -10,7 +10,7 @@ Below are the write-ups of my notes that I took during the lectures and assignme
 
 The notes are mainly for my own use and if you wish to learn more about Cloud Computing, I'd recommend checking out the courses: https://www.coursera.org/specializations/cloud-computing
 
-## Notes:
+## Notes and Project:
 
 ### 1. [Cloud Computing Concepts Part 1](Concepts-1.md)
 
