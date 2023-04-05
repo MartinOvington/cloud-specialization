@@ -14,7 +14,7 @@ The notes are mainly for my own use and if you wish to learn more about Cloud Co
 
 ### 1. [Cloud Computing Concepts Part 1](Concepts-1.md)
 
-### 2. [Cloud Computing Concepts Part 2](Concepts-1.md)
+### 2. [Cloud Computing Concepts Part 2](Concepts-2.md)
 
 ### 3. [Cloud Computing Applications Part 1: Cloud Systems and Infrastructure](Applications-1.md)
 
